@@ -1,6 +1,6 @@
 ---
 title: "HELPmiss (Data Verbs) Activity"
-author: "YOUR NAME HERE"
+author: "Jared Hayes "
 output: html_notebook
 ---
 
@@ -35,6 +35,16 @@ data("HELPmiss", package = "mosaicData")
 
 *Write several sentences (or a bullet list) describing the HELP Study and the resulting `HELPmiss` data.  Your description should investigate basic data provenance (e.g., Who, What, When, Where, Why, How), explain the setting for the data, specify what each case represents in the data, and remark on inclusion/exclusion criteria.* 
 
+-Who: Adult inpatients recruited from detoxification unit who had no primary care physician  
+
+-What:A clinical trail for adult inpatients recruited from a detoxification unit 
+
+-Where: Boston
+
+-Why:To see if HELP clinic effectively linked alcohol and drug dependent individuals to primary medical care 
+
+-How:Randomly selected adult inpatients from a detoxification unit and comparing to control how many inpatients were conntected to primary care 
+
 
 - investigate by searching R help documentation
 - there's a research paper cited where additional detail is provided
@@ -48,14 +58,16 @@ data("HELPmiss", package = "mosaicData")
 1. number of people (cases) in `HELPmiss` study
 
 ```{r}
-#Your code here 
+HELPmiss%>%
+  summarise(count=n())
 
 ```
 
 2. total number of times in the past 6 months entered a detox program (measured at baseline) for all the people in `HELPmiss`. 
 
 ```{r}
-#Your code here 
+HELPmiss%>%
+  summarise(count=sum(e2b,na.rm=TRUE))
 
 ```
 
@@ -64,7 +76,8 @@ data("HELPmiss", package = "mosaicData")
 
 
 ```{r}
-#Your code here 
+HELPmiss%>%
+  summarise(avg_daysanysub=mean(daysanysub,na.rm=TRUE))
 
 ```
 
@@ -84,31 +97,83 @@ data("HELPmiss", package = "mosaicData")
 ### males versus females
 ```{r}
 #Your code here
+HELPmiss%>%
+  group_by(sex)%>%
+  summarise(count=n())
+
+HELPmiss%>%
+  group_by(sex)%>%
+  summarise(Times_in_detox=sum(e2b,na.rm=TRUE))
+
+HELPmiss%>%
+  group_by(sex)%>%
+  summarise(avg_daysanysub=mean(daysanysub,na.rm=TRUE))
+
 
 ```
 
 ### homeless or not
 ```{r}
-#Your code here
+HELPmiss%>%
+  group_by(homeless)%>%
+  summarise(count=n())
+
+HELPmiss%>%
+  group_by(homeless)%>%
+  summarise(Times_in_detox=sum(e2b,na.rm=TRUE))
+
+HELPmiss%>%
+  group_by(homeless)%>%
+  summarise(avg_daysanysub=mean(daysanysub,na.rm=TRUE))
 
 ```
 
 
 ### substance
 ```{r}
-#Your code here
+HELPmiss%>%
+  group_by(substance)%>%
+  summarise(count=n())
+
+HELPmiss%>%
+  group_by(substance)%>%
+  summarise(Times_in_detox=sum(e2b,na.rm=TRUE))
+
+HELPmiss%>%
+  group_by(substance)%>%
+  summarise(avg_daysanysub=mean(daysanysub,na.rm=TRUE))
 
 ```
 
 ### homeless versus housed broken down by sex
 ```{r}
-#Your code here
+HELPmiss%>%
+  group_by(sex,homeless)%>%
+  summarise(count=n())
+
+HELPmiss%>%
+  group_by(sex,homeless)%>%
+  summarise(Times_in_detox=sum(e2b,na.rm=TRUE))
+
+HELPmiss%>%
+  group_by(sex,homeless)%>%
+  summarise(avg_daysanysub=mean(daysanysub,na.rm=TRUE))
 
 ```
 
 ### homeless versus housed broken down by substance
 ```{r}
-#Your code here
+HELPmiss%>%
+  group_by(homeless,substance)%>%
+  summarise(count=n())
+
+HELPmiss%>%
+  group_by(homeless,substance)%>%
+  summarise(Times_in_detox=sum(e2b,na.rm=TRUE))
+
+HELPmiss%>%
+  group_by(homeless,substance)%>%
+  summarise(avg_daysanysub=mean(daysanysub,na.rm=TRUE))
 
 ```
 
@@ -122,8 +187,11 @@ data("HELPmiss", package = "mosaicData")
 
 
 ```{r}
-# Your Code here.
-
+ggplot(HELPmiss) +
+  aes(x = age, y = daysanysub, colour = substance) +
+  geom_point(shape = "circle", size = 1.5) +
+  scale_color_hue(direction = 1) +
+  theme_minimal()
 ```
 
 
