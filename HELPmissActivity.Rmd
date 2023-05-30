@@ -111,7 +111,7 @@ HELPmiss%>%
 
 
 ```
-
+Males checked into rehab almost five times as much as females while spending around the same time in rehab each time. 
 ### homeless or not
 ```{r}
 HELPmiss%>%
@@ -127,7 +127,7 @@ HELPmiss%>%
   summarise(avg_daysanysub=mean(daysanysub,na.rm=TRUE))
 
 ```
-
+Homeless people checked into rehab almost 2.5 times more than housed people checked into rehab while having around the same amount of time until they relapsed. 
 
 ### substance
 ```{r}
@@ -144,7 +144,7 @@ HELPmiss%>%
   summarise(avg_daysanysub=mean(daysanysub,na.rm=TRUE))
 
 ```
-
+They were about the same number of people for each drug however the data does not show if individuals are addicted to multiple drugs or simultaneously addicted to one of the drugs shown and something not shown. Heroine appears to have a significant difference in replase compared to the other drugs.  
 ### homeless versus housed broken down by sex
 ```{r}
 HELPmiss%>%
@@ -160,7 +160,7 @@ HELPmiss%>%
   summarise(avg_daysanysub=mean(daysanysub,na.rm=TRUE))
 
 ```
-
+Males had an equal number of people wwre housed and homeless while females had more who were housed than homeless. Males who were homeless by far checked into rehab the most times compared to the number of people in the cohort. Females appeared to do significantly better than males in replase time but there does not appear to be a significant difference between housed and homeless in relapse time . 
 ### homeless versus housed broken down by substance
 ```{r}
 HELPmiss%>%
@@ -176,7 +176,7 @@ HELPmiss%>%
   summarise(avg_daysanysub=mean(daysanysub,na.rm=TRUE))
 
 ```
-
+Homeless were most likely to be addicted to alcohol while housed were most likely to be addicted to cocaine. Heroin led to homeless people checking into to rehab the most while alcohol led to people checking in the rehab the most. People lasted day by the most if they were rehabbed for alcohol and were housed while people lasted the shortest period of time if they were housed and were homeless. If they were homeless heroin and alcohol had around the same relapse time while cocaine had the longest relapsed time for homeless which is also seen in housed. 
 
 
 ## Task 4: Data Visualization & Observations
@@ -193,6 +193,6 @@ ggplot(HELPmiss) +
   scale_color_hue(direction = 1) +
   theme_minimal()
 ```
-
+There does not appear to be a relationship between age ands relapse time for any substance. There also does not appear to be a relationship between substance and relapse time. Relapse time appears to be a bit longer for cocaine across all ages but individuals had the longest relapse time if their substance was not cocaine. It appears that if you made it past a certain poiiunt for alcohol or heroin that you were more likely to make it a long period of time without relapsing. 
 
 
