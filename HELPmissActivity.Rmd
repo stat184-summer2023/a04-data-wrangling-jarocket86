@@ -127,7 +127,7 @@ HELPmiss%>%
   summarise(avg_daysanysub=mean(daysanysub,na.rm=TRUE))
 
 ```
-Homeless people checked into rehab almost 2.5 times more than housed people checked into rehab while having around the same amount of time until they relapsed. 
+Homeless people checked into rehab almost 2.5 times more than housed people checked into rehab while having around the same amount of time until they relapsed for their drug.
 
 ### substance
 ```{r}
